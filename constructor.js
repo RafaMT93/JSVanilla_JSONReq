@@ -1,4 +1,5 @@
 let body = document.getElementById('content');
+let searchAtt = document.getElementById('searchAtt');
 
 //Requisiição assincrona do JSON
 
@@ -10,18 +11,18 @@ async function fetchData() {
     .then((json) => {
       construct(json);
       selectButtons();
-      document.getElementById('searchAtt').addEventListener('keyup', filterTxt);
+      searchAtt.addEventListener('keyup', filterTxt);
     });
 }
 fetchData();
-function construct(archive) {
+let construct = (archive) => {
   archive.forEach(({ titulo, data, link, content }) => {
-    let section = new Create(data, link, content);
+    let section = new Create(titulo, data, link, content);
     section.CreateButton(titulo, data);
     section.CreateDiv(content, link);
     document.body.appendChild(document.createElement('br'));
   });
-}
+};
 function Create(titulo, data, link, content) {
   (this.titulo = titulo), (this.data = data);
   this.link = link;
@@ -73,8 +74,9 @@ function filterTxt() {
       let filterResult = retiraAcentos(button.innerText)
         .toUpperCase()
         .indexOf(txt.toUpperCase());
-      if (result < 0 && filterResult < 0) button.style.display = 'none';
-      else button.style.display = 'block';
+      result < 0 && filterResult < 0
+        ? (button.style.display = 'none')
+        : (button.style.display = 'block');
     }
   });
 }
