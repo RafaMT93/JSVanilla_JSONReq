@@ -18,35 +18,37 @@ fetchData();
 let construct = (archive) => {
   archive.forEach(({ titulo, data, link, content }) => {
     let section = new Create(titulo, data, link, content);
-    section.CreateButton(titulo, data);
-    section.CreateDiv(content, link);
+    section.CreateButton();
+    section.CreateDiv();
     document.body.appendChild(document.createElement('br'));
   });
 };
-function Create(titulo, data, link, content) {
-  (this.titulo = titulo), (this.data = data);
-  this.link = link;
-  this.content = content;
+class Create {
+  constructor(titulo, data, link, content) {
+    this.titulo = titulo;
+    this.data = data;
+    this.link = link;
+    this.content = content;
+  }
+  CreateButton() {
+    let button = document.createElement('button');
+    button.setAttribute('class', 'button');
+    button.innerText = this.data + ' - ' + this.titulo;
+    document.body.appendChild(button);
+  }
+  CreateDiv = () => {
+    let section = document.createElement('section');
+    let contentDiv = document.createElement('div');
+    let linkDiv = document.createElement('div');
+    section.setAttribute('class', 'notVisibled');
+    contentDiv.innerText = this.content;
+    linkDiv.innerHTML =
+      "<a href='" + this.link + "'> Clique Aqui</a> para visualizar o conteúdo";
+    document.body.appendChild(section);
+    section.appendChild(contentDiv);
+    section.appendChild(linkDiv);
+  };
 }
-Create.prototype.CreateButton = (titulo, data) => {
-  let button = document.createElement('button');
-  button.setAttribute('class', 'button');
-  button.innerText = data + ' - ' + titulo;
-  document.body.appendChild(button);
-};
-Create.prototype.CreateDiv = (content, link) => {
-  let section = document.createElement('section');
-  let contentDiv = document.createElement('div');
-  let linkDiv = document.createElement('div');
-  section.setAttribute('class', 'notVisibled');
-  contentDiv.innerText = content;
-  linkDiv.innerHTML =
-    "<a href='" + link + "'> Clique Aqui</a> para visualizar o conteúdo";
-  document.body.appendChild(section);
-  section.appendChild(contentDiv);
-  section.appendChild(linkDiv);
-};
-
 function toggleclass() {
   this.classList.toggle('active');
   this.nextElementSibling.classList.toggle('notVisibled');
