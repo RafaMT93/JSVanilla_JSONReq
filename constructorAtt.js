@@ -40,10 +40,12 @@ class Create {
     let section = document.createElement('section');
     let contentDiv = document.createElement('div');
     let linkDiv = document.createElement('div');
-    section.setAttribute('class', 'notVisibled');
+    section.setAttribute('class', 'notVisibled sectionContent');
     contentDiv.innerText = this.content;
     linkDiv.innerHTML =
-      "<a href='" + this.link + "'> Clique Aqui</a> para visualizar o conteúdo";
+      "<a href='" +
+      this.link +
+      "' target='_blank'> Clique Aqui</a> para visualizar o conteúdo";
     document.body.appendChild(section);
     section.appendChild(contentDiv);
     section.appendChild(linkDiv);

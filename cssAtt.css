@@ -2,10 +2,12 @@
   box-sizing: border-box;
 }
 body {
-  margin: 0px 5rem;
+  margin: 3rem 5rem;
   padding: 0px;
   --first-type: 'Arial';
   font-family: var(--first-type);
+  border: 4px dashed #fb9e;
+  border-radius: 0.85rem;
 }
 
 a {
@@ -47,7 +49,7 @@ div {
 
 .container {
   padding: 0 1rem;
-  margin: 3rem auto;
+  margin: 1.2rem auto;
 }
 
 .center {
@@ -98,6 +100,11 @@ div {
   width: 10px;
   height: 10px;
   float: left;
+}
+
+.sectionContent {
+  margin: auto 1rem;
+  color: #333 !important;
 }
 
 .notVisibled {
